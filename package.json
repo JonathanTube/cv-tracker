@@ -1,13 +1,16 @@
 {
   "name": "cv-tracker",
-  "version": "1.0.0",
-  "description": "a CV tracker that tracks CVs for your own job applications",
-  "main": "index.js",
+  "private": true,
+  "devDependencies": {
+    "turbo": "^2.0.0",
+    "tsx": "^4.20.6",
+    "typescript": "^5.9.3"
+  },
   "scripts": {
     "dev": "concurrently \"pnpm --filter cv-tracker-backend dev\" \"pnpm --filter cv-tracker-frontend dev\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "Jonathan Kong",
-  "license": "ISC"
+  "dependencies": {
+    "dotenv": "^17.2.3"
+  }
 }
