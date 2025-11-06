@@ -1,9 +1,8 @@
 {
-  "name": "@cv-tracker/db",
+  "name": "@cv-tracker/prisma",
   "version": "1.0.0",
+  "main": "client/index.js",
   "type": "module",
-  "main": "index.js",
-  "types": "index.d.ts",
   "scripts": {
     "generate": "npx prisma generate",
     "update": "npx prisma db push"

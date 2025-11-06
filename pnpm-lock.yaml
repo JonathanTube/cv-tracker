@@ -23,6 +23,10 @@ importers:
         version: 5.9.3
 
   apps/backend:
+    dependencies:
+      '@cv-tracker/prisma':
+        specifier: workspace:*
+        version: link:../../packages/prisma
     devDependencies:
       nodemon:
         specifier: ^3.1.10
