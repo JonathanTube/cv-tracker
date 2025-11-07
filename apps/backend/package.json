@@ -1,18 +1,28 @@
 {
-  "name": "backend",
+  "name": "@cv-tracker/backend",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "private": true,
+  "type": "module",
   "scripts": {
-    "dev": "nodemon index.js"
+    "dev": "dotenv -e .env.development -- nodemon --watch src --ext ts --exec tsx src/index.ts",
+    "test": "dotenv -e .env.test -- vitest run",
+    "test:ui": "dotenv -e .env.test -- vitest --ui",
+    "start": "dotenv -e .env.production --  node dist/main.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "nodemon": "^3.1.10"
+    "@types/express": "^5.0.5",
+    "@types/node": "^24.10.0",
+    "@vitest/coverage-v8": "^4.0.7",
+    "@vitest/ui": "^4.0.7",
+    "dotenv-cli": "^11.0.0",
+    "nodemon": "^3.1.10",
+    "vitest": "^4.0.7"
   },
   "dependencies": {
-    "@cv-tracker/prisma": "workspace:*"
+    "@cv-tracker/database": "workspace:*",
+    "express": "^5.1.0"
   }
 }

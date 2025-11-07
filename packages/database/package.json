@@ -1,0 +1,20 @@
+{
+  "name": "@cv-tracker/database",
+  "version": "1.0.0",
+  "main": "client/index.js",
+  "type": "module",
+  "scripts": {
+    "generate": "npx prisma generate",
+    "update": "npx prisma db push"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^24.10.0",
+    "prisma": "^6.19.0"
+  },
+  "dependencies": {
+    "@prisma/client": "^6.19.0"
+  }
+}
