@@ -9,56 +9,64 @@ datasource db {
 }
 
 model Country {
-  id      String    @id @default(auto()) @map("_id") @db.ObjectId
-  name    String    @unique
-  Company Company[]
+  id        String    @id @default(auto()) @map("_id") @db.ObjectId
+  name      String    @unique
+  companies Company[]
 }
 
 model Industry {
-  id      String    @id @default(auto()) @map("_id") @db.ObjectId
-  name    String    @unique
-  Company Company[]
+  id        String    @id @default(auto()) @map("_id") @db.ObjectId
+  name      String    @unique
+  companies Company[]
 }
 
 model Company {
-  id          String   @id @default(auto()) @map("_id") @db.ObjectId
-  name        String
-  website     String
-  country     Country  @relation(fields: [countryIds], references: [id])
-  countryIds  String[] @db.ObjectId
-  industry    Industry @relation(fields: [industryIds], references: [id])
-  industryIds String[] @db.ObjectId
+  id         String    @id @default(auto()) @map("_id") @db.ObjectId
+  name       String
+  website    String
+  Country    Country?  @relation(fields: [countryId], references: [id])
+  countryId  String?   @db.ObjectId
+  Industry   Industry? @relation(fields: [industryId], references: [id])
+  industryId String?   @db.ObjectId
 }
 
 model TechStack {
-  id   String @id @default(auto()) @map("_id") @db.ObjectId
-  name String
-  Job  Job[]
+  id    String  @id @default(auto()) @map("_id") @db.ObjectId
+  name  String
+  Job   Job?    @relation(fields: [jobId], references: [id])
+  jobId String? @db.ObjectId
 }
 
 model Job {
   id            String        @id @default(auto()) @map("_id") @db.ObjectId
   title         String
   sourceUrl     String
-  techStacks    TechStack     @relation(fields: [techStackId], references: [id])
-  techStackId   String        @db.ObjectId
   onlineTestUrl String
   homeworkQuize String
-  Application   Application[]
+  applications  Application[]
+  techStacks    TechStack[]
 }
 
 model User {
-  id          String        @id @default(auto()) @map("_id") @db.ObjectId
-  username    String
-  nickname    String
-  Application Application[]
+  id           String        @id @default(auto()) @map("_id") @db.ObjectId
+  username     String
+  nickname     String
+  applications Application[]
+}
+
+enum ApplicationState {
+  POSTED
+  REJECTED
+  ONGOING
+  FAILED
 }
 
 model Application {
-  id     String @id @default(auto()) @map("_id") @db.ObjectId
-  user   User   @relation(fields: [userId], references: [id])
-  userId String @db.ObjectId
-  job    Job    @relation(fields: [jobId], references: [id])
-  jobId  String @db.ObjectId
-  state  String
+  id          String           @id @default(auto()) @map("_id") @db.ObjectId
+  coverLetter String
+  state       ApplicationState @default(POSTED)
+  Job         Job?             @relation(fields: [jobId], references: [id])
+  jobId       String?          @db.ObjectId
+  User        User?            @relation(fields: [userId], references: [id])
+  userId      String?          @db.ObjectId
 }
