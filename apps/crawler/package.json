@@ -1,16 +1,23 @@
 {
   "name": "crawler",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
   "scripts": {
-    "dev": "node index.js",
+    "dev": "tsx src/index.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@cv-tracker/database": "workspace:*",
+    "@cv-tracker/utils": "workspace:*",
+    "axios": "^1.13.2",
+    "cheerio": "^1.1.2",
     "playwright": "^1.56.1"
+  },
+  "devDependencies": {
+    "@types/node": "^24.10.0"
   }
 }
