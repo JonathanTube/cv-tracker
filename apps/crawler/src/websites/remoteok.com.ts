@@ -3,10 +3,10 @@ import delay from '@cv-tracker/utils/src/delay.js';
 import dayjs from 'dayjs';
 
 interface Job {
-    companyLogoUrl?: string
+    postTime?: string
+    logoUrl?: string
+    companyName?: string
     jobTitle?: string
-    organization?: string
-    imageUrl?: string
 }
 
 /**
@@ -49,7 +49,7 @@ export default class RemoteOkCom {
             window.scrollTo(0, document.body.scrollHeight);
         });
         // wait for the new jobs to load
-        await delay(3000);
+        await delay(2000);
         // fetch the new jobs
         await this.execute(page);
     }
@@ -69,14 +69,26 @@ export default class RemoteOkCom {
 
     async handleSingleRow(row: Locator, datetime: string) {
         try {
-            await row.click();
-            await delay(1000);
-            const expand = await row.locator('xpath=following-sibling::tr[1]');
-            const jobTitle = await row.locator('div.description h1').textContent();
-            const logoUrl = await expand.locator('div.description div.company_profile img.logo').getAttribute('src');
-            const companyName = await expand.locator('div.description div.company_profile h2').textContent();
+            let job: Job = { postTime: datetime }
             const dataOffset = await row!.getAttribute('data-offset');
-            console.log(`index=${dataOffset}, datetime=${datetime}, jobTitle=${jobTitle?.trim()}, companyName=${companyName?.trim()}, logoUrl=${logoUrl}`);
+            await row.click();
+            await delay(100);
+            const expandItem = await row.locator('xpath=following-sibling::tr[1]');
+            const jobTitleItem = await expandItem.locator('div.description >div').nth(1).locator('h1');
+            if (await jobTitleItem.isVisible()) {
+                job.jobTitle = await jobTitleItem.textContent() || "";
+            }
+
+            const logoUrlItem = await expandItem.locator('div.description div.company_profile img.logo');
+            if (await logoUrlItem.isVisible()) {
+                job.logoUrl = await logoUrlItem.getAttribute('src') || "";
+            }
+
+            const companyNameItem = await expandItem.locator('div.description div.company_profile h2');
+            if (await companyNameItem.isVisible()) {
+                job.companyName = (await companyNameItem.textContent() || "").trim();
+            }
+            console.log('dataOffset=', dataOffset, 'job=', job);
         } catch (err) {
             console.log(err);
         }
