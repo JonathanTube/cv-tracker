@@ -82,8 +82,10 @@ export type IndustryScalarFieldEnum = (typeof IndustryScalarFieldEnum)[keyof typ
 
 export const CompanyScalarFieldEnum = {
   id: 'id',
+  fromWebsite: 'fromWebsite',
   name: 'name',
-  website: 'website',
+  logoUrl: 'logoUrl',
+  websiteUrl: 'websiteUrl',
   countryId: 'countryId',
   industryId: 'industryId'
 } as const
@@ -102,10 +104,12 @@ export type TechStackScalarFieldEnum = (typeof TechStackScalarFieldEnum)[keyof t
 
 export const JobScalarFieldEnum = {
   id: 'id',
+  companyId: 'companyId',
   title: 'title',
   sourceUrl: 'sourceUrl',
   onlineTestUrl: 'onlineTestUrl',
-  homeworkQuize: 'homeworkQuize'
+  homeworkQuize: 'homeworkQuize',
+  description: 'description'
 } as const
 
 export type JobScalarFieldEnum = (typeof JobScalarFieldEnum)[keyof typeof JobScalarFieldEnum]

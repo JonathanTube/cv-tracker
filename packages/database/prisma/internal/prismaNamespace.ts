@@ -969,8 +969,10 @@ export type IndustryScalarFieldEnum = (typeof IndustryScalarFieldEnum)[keyof typ
 
 export const CompanyScalarFieldEnum = {
   id: 'id',
+  fromWebsite: 'fromWebsite',
   name: 'name',
-  website: 'website',
+  logoUrl: 'logoUrl',
+  websiteUrl: 'websiteUrl',
   countryId: 'countryId',
   industryId: 'industryId'
 } as const
@@ -989,10 +991,12 @@ export type TechStackScalarFieldEnum = (typeof TechStackScalarFieldEnum)[keyof t
 
 export const JobScalarFieldEnum = {
   id: 'id',
+  companyId: 'companyId',
   title: 'title',
   sourceUrl: 'sourceUrl',
   onlineTestUrl: 'onlineTestUrl',
-  homeworkQuize: 'homeworkQuize'
+  homeworkQuize: 'homeworkQuize',
+  description: 'description'
 } as const
 
 export type JobScalarFieldEnum = (typeof JobScalarFieldEnum)[keyof typeof JobScalarFieldEnum]
@@ -1051,6 +1055,20 @@ export type StringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 
  * Reference to a field of type 'String[]'
  */
 export type ListStringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'String[]'>
+    
+
+
+/**
+ * Reference to a field of type 'FromWebsite'
+ */
+export type EnumFromWebsiteFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'FromWebsite'>
+    
+
+
+/**
+ * Reference to a field of type 'FromWebsite[]'
+ */
+export type ListEnumFromWebsiteFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'FromWebsite[]'>
     
 
 

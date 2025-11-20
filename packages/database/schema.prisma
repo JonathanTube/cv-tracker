@@ -8,6 +8,11 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+enum FromWebsite {
+  UNKNOWN
+  REMOTEOK
+}
+
 model Country {
   id        String    @id @default(auto()) @map("_id") @db.ObjectId
   name      String    @unique
@@ -21,13 +26,17 @@ model Industry {
 }
 
 model Company {
-  id         String    @id @default(auto()) @map("_id") @db.ObjectId
-  name       String
-  website    String
-  Country    Country?  @relation(fields: [countryId], references: [id])
-  countryId  String?   @db.ObjectId
-  Industry   Industry? @relation(fields: [industryId], references: [id])
-  industryId String?   @db.ObjectId
+  id          String      @id @default(auto()) @map("_id") @db.ObjectId
+  fromWebsite FromWebsite @default(UNKNOWN)
+  name        String
+  logoUrl     String?
+  websiteUrl  String?
+  Country     Country?    @relation(fields: [countryId], references: [id])
+  countryId   String?     @db.ObjectId
+  Industry    Industry?   @relation(fields: [industryId], references: [id])
+  industryId  String?     @db.ObjectId
+
+  @@unique([name, fromWebsite])
 }
 
 model TechStack {
@@ -39,10 +48,12 @@ model TechStack {
 
 model Job {
   id            String        @id @default(auto()) @map("_id") @db.ObjectId
+  companyId     String?       @db.ObjectId
   title         String
   sourceUrl     String
   onlineTestUrl String
   homeworkQuize String
+  description   String
   applications  Application[]
   techStacks    TechStack[]
 }

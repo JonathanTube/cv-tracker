@@ -9,6 +9,14 @@
 * 🟢 You can import this file directly.
 */
 
+export const FromWebsite = {
+  UNKNOWN: 'UNKNOWN',
+  REMOTEOK: 'REMOTEOK'
+} as const
+
+export type FromWebsite = (typeof FromWebsite)[keyof typeof FromWebsite]
+
+
 export const ApplicationState = {
   POSTED: 'POSTED',
   REJECTED: 'REJECTED',

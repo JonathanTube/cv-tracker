@@ -26,24 +26,30 @@ export type AggregateCompany = {
 
 export type CompanyMinAggregateOutputType = {
   id: string | null
+  fromWebsite: $Enums.FromWebsite | null
   name: string | null
-  website: string | null
+  logoUrl: string | null
+  websiteUrl: string | null
   countryId: string | null
   industryId: string | null
 }
 
 export type CompanyMaxAggregateOutputType = {
   id: string | null
+  fromWebsite: $Enums.FromWebsite | null
   name: string | null
-  website: string | null
+  logoUrl: string | null
+  websiteUrl: string | null
   countryId: string | null
   industryId: string | null
 }
 
 export type CompanyCountAggregateOutputType = {
   id: number
+  fromWebsite: number
   name: number
-  website: number
+  logoUrl: number
+  websiteUrl: number
   countryId: number
   industryId: number
   _all: number
@@ -52,24 +58,30 @@ export type CompanyCountAggregateOutputType = {
 
 export type CompanyMinAggregateInputType = {
   id?: true
+  fromWebsite?: true
   name?: true
-  website?: true
+  logoUrl?: true
+  websiteUrl?: true
   countryId?: true
   industryId?: true
 }
 
 export type CompanyMaxAggregateInputType = {
   id?: true
+  fromWebsite?: true
   name?: true
-  website?: true
+  logoUrl?: true
+  websiteUrl?: true
   countryId?: true
   industryId?: true
 }
 
 export type CompanyCountAggregateInputType = {
   id?: true
+  fromWebsite?: true
   name?: true
-  website?: true
+  logoUrl?: true
+  websiteUrl?: true
   countryId?: true
   industryId?: true
   _all?: true
@@ -149,8 +161,10 @@ export type CompanyGroupByArgs<ExtArgs extends runtime.Types.Extensions.Internal
 
 export type CompanyGroupByOutputType = {
   id: string
+  fromWebsite: $Enums.FromWebsite
   name: string
-  website: string
+  logoUrl: string | null
+  websiteUrl: string | null
   countryId: string | null
   industryId: string | null
   _count: CompanyCountAggregateOutputType | null
@@ -178,8 +192,10 @@ export type CompanyWhereInput = {
   OR?: Prisma.CompanyWhereInput[]
   NOT?: Prisma.CompanyWhereInput | Prisma.CompanyWhereInput[]
   id?: Prisma.StringFilter<"Company"> | string
+  fromWebsite?: Prisma.EnumFromWebsiteFilter<"Company"> | $Enums.FromWebsite
   name?: Prisma.StringFilter<"Company"> | string
-  website?: Prisma.StringFilter<"Company"> | string
+  logoUrl?: Prisma.StringNullableFilter<"Company"> | string | null
+  websiteUrl?: Prisma.StringNullableFilter<"Company"> | string | null
   countryId?: Prisma.StringNullableFilter<"Company"> | string | null
   industryId?: Prisma.StringNullableFilter<"Company"> | string | null
   Country?: Prisma.XOR<Prisma.CountryNullableScalarRelationFilter, Prisma.CountryWhereInput> | null
@@ -188,8 +204,10 @@ export type CompanyWhereInput = {
 
 export type CompanyOrderByWithRelationInput = {
   id?: Prisma.SortOrder
+  fromWebsite?: Prisma.SortOrder
   name?: Prisma.SortOrder
-  website?: Prisma.SortOrder
+  logoUrl?: Prisma.SortOrder
+  websiteUrl?: Prisma.SortOrder
   countryId?: Prisma.SortOrder
   industryId?: Prisma.SortOrder
   Country?: Prisma.CountryOrderByWithRelationInput
@@ -198,21 +216,26 @@ export type CompanyOrderByWithRelationInput = {
 
 export type CompanyWhereUniqueInput = Prisma.AtLeast<{
   id?: string
+  name_fromWebsite?: Prisma.CompanyNameFromWebsiteCompoundUniqueInput
   AND?: Prisma.CompanyWhereInput | Prisma.CompanyWhereInput[]
   OR?: Prisma.CompanyWhereInput[]
   NOT?: Prisma.CompanyWhereInput | Prisma.CompanyWhereInput[]
+  fromWebsite?: Prisma.EnumFromWebsiteFilter<"Company"> | $Enums.FromWebsite
   name?: Prisma.StringFilter<"Company"> | string
-  website?: Prisma.StringFilter<"Company"> | string
+  logoUrl?: Prisma.StringNullableFilter<"Company"> | string | null
+  websiteUrl?: Prisma.StringNullableFilter<"Company"> | string | null
   countryId?: Prisma.StringNullableFilter<"Company"> | string | null
   industryId?: Prisma.StringNullableFilter<"Company"> | string | null
   Country?: Prisma.XOR<Prisma.CountryNullableScalarRelationFilter, Prisma.CountryWhereInput> | null
   Industry?: Prisma.XOR<Prisma.IndustryNullableScalarRelationFilter, Prisma.IndustryWhereInput> | null
-}, "id">
+}, "id" | "name_fromWebsite">
 
 export type CompanyOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
+  fromWebsite?: Prisma.SortOrder
   name?: Prisma.SortOrder
-  website?: Prisma.SortOrder
+  logoUrl?: Prisma.SortOrder
+  websiteUrl?: Prisma.SortOrder
   countryId?: Prisma.SortOrder
   industryId?: Prisma.SortOrder
   _count?: Prisma.CompanyCountOrderByAggregateInput
@@ -225,58 +248,74 @@ export type CompanyScalarWhereWithAggregatesInput = {
   OR?: Prisma.CompanyScalarWhereWithAggregatesInput[]
   NOT?: Prisma.CompanyScalarWhereWithAggregatesInput | Prisma.CompanyScalarWhereWithAggregatesInput[]
   id?: Prisma.StringWithAggregatesFilter<"Company"> | string
+  fromWebsite?: Prisma.EnumFromWebsiteWithAggregatesFilter<"Company"> | $Enums.FromWebsite
   name?: Prisma.StringWithAggregatesFilter<"Company"> | string
-  website?: Prisma.StringWithAggregatesFilter<"Company"> | string
+  logoUrl?: Prisma.StringNullableWithAggregatesFilter<"Company"> | string | null
+  websiteUrl?: Prisma.StringNullableWithAggregatesFilter<"Company"> | string | null
   countryId?: Prisma.StringNullableWithAggregatesFilter<"Company"> | string | null
   industryId?: Prisma.StringNullableWithAggregatesFilter<"Company"> | string | null
 }
 
 export type CompanyCreateInput = {
   id?: string
+  fromWebsite?: $Enums.FromWebsite
   name: string
-  website: string
+  logoUrl?: string | null
+  websiteUrl?: string | null
   Country?: Prisma.CountryCreateNestedOneWithoutCompaniesInput
   Industry?: Prisma.IndustryCreateNestedOneWithoutCompaniesInput
 }
 
 export type CompanyUncheckedCreateInput = {
   id?: string
+  fromWebsite?: $Enums.FromWebsite
   name: string
-  website: string
+  logoUrl?: string | null
+  websiteUrl?: string | null
   countryId?: string | null
   industryId?: string | null
 }
 
 export type CompanyUpdateInput = {
+  fromWebsite?: Prisma.EnumFromWebsiteFieldUpdateOperationsInput | $Enums.FromWebsite
   name?: Prisma.StringFieldUpdateOperationsInput | string
-  website?: Prisma.StringFieldUpdateOperationsInput | string
+  logoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  websiteUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   Country?: Prisma.CountryUpdateOneWithoutCompaniesNestedInput
   Industry?: Prisma.IndustryUpdateOneWithoutCompaniesNestedInput
 }
 
 export type CompanyUncheckedUpdateInput = {
+  fromWebsite?: Prisma.EnumFromWebsiteFieldUpdateOperationsInput | $Enums.FromWebsite
   name?: Prisma.StringFieldUpdateOperationsInput | string
-  website?: Prisma.StringFieldUpdateOperationsInput | string
+  logoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  websiteUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   countryId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   industryId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type CompanyCreateManyInput = {
   id?: string
+  fromWebsite?: $Enums.FromWebsite
   name: string
-  website: string
+  logoUrl?: string | null
+  websiteUrl?: string | null
   countryId?: string | null
   industryId?: string | null
 }
 
 export type CompanyUpdateManyMutationInput = {
+  fromWebsite?: Prisma.EnumFromWebsiteFieldUpdateOperationsInput | $Enums.FromWebsite
   name?: Prisma.StringFieldUpdateOperationsInput | string
-  website?: Prisma.StringFieldUpdateOperationsInput | string
+  logoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  websiteUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type CompanyUncheckedUpdateManyInput = {
+  fromWebsite?: Prisma.EnumFromWebsiteFieldUpdateOperationsInput | $Enums.FromWebsite
   name?: Prisma.StringFieldUpdateOperationsInput | string
-  website?: Prisma.StringFieldUpdateOperationsInput | string
+  logoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  websiteUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   countryId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   industryId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
@@ -291,26 +330,37 @@ export type CompanyOrderByRelationAggregateInput = {
   _count?: Prisma.SortOrder
 }
 
+export type CompanyNameFromWebsiteCompoundUniqueInput = {
+  name: string
+  fromWebsite: $Enums.FromWebsite
+}
+
 export type CompanyCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
+  fromWebsite?: Prisma.SortOrder
   name?: Prisma.SortOrder
-  website?: Prisma.SortOrder
+  logoUrl?: Prisma.SortOrder
+  websiteUrl?: Prisma.SortOrder
   countryId?: Prisma.SortOrder
   industryId?: Prisma.SortOrder
 }
 
 export type CompanyMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
+  fromWebsite?: Prisma.SortOrder
   name?: Prisma.SortOrder
-  website?: Prisma.SortOrder
+  logoUrl?: Prisma.SortOrder
+  websiteUrl?: Prisma.SortOrder
   countryId?: Prisma.SortOrder
   industryId?: Prisma.SortOrder
 }
 
 export type CompanyMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
+  fromWebsite?: Prisma.SortOrder
   name?: Prisma.SortOrder
-  website?: Prisma.SortOrder
+  logoUrl?: Prisma.SortOrder
+  websiteUrl?: Prisma.SortOrder
   countryId?: Prisma.SortOrder
   industryId?: Prisma.SortOrder
 }
@@ -399,6 +449,10 @@ export type CompanyUncheckedUpdateManyWithoutIndustryNestedInput = {
   deleteMany?: Prisma.CompanyScalarWhereInput | Prisma.CompanyScalarWhereInput[]
 }
 
+export type EnumFromWebsiteFieldUpdateOperationsInput = {
+  set?: $Enums.FromWebsite
+}
+
 export type NullableStringFieldUpdateOperationsInput = {
   set?: string | null
   unset?: boolean
@@ -406,15 +460,19 @@ export type NullableStringFieldUpdateOperationsInput = {
 
 export type CompanyCreateWithoutCountryInput = {
   id?: string
+  fromWebsite?: $Enums.FromWebsite
   name: string
-  website: string
+  logoUrl?: string | null
+  websiteUrl?: string | null
   Industry?: Prisma.IndustryCreateNestedOneWithoutCompaniesInput
 }
 
 export type CompanyUncheckedCreateWithoutCountryInput = {
   id?: string
+  fromWebsite?: $Enums.FromWebsite
   name: string
-  website: string
+  logoUrl?: string | null
+  websiteUrl?: string | null
   industryId?: string | null
 }
 
@@ -448,23 +506,29 @@ export type CompanyScalarWhereInput = {
   OR?: Prisma.CompanyScalarWhereInput[]
   NOT?: Prisma.CompanyScalarWhereInput | Prisma.CompanyScalarWhereInput[]
   id?: Prisma.StringFilter<"Company"> | string
+  fromWebsite?: Prisma.EnumFromWebsiteFilter<"Company"> | $Enums.FromWebsite
   name?: Prisma.StringFilter<"Company"> | string
-  website?: Prisma.StringFilter<"Company"> | string
+  logoUrl?: Prisma.StringNullableFilter<"Company"> | string | null
+  websiteUrl?: Prisma.StringNullableFilter<"Company"> | string | null
   countryId?: Prisma.StringNullableFilter<"Company"> | string | null
   industryId?: Prisma.StringNullableFilter<"Company"> | string | null
 }
 
 export type CompanyCreateWithoutIndustryInput = {
   id?: string
+  fromWebsite?: $Enums.FromWebsite
   name: string
-  website: string
+  logoUrl?: string | null
+  websiteUrl?: string | null
   Country?: Prisma.CountryCreateNestedOneWithoutCompaniesInput
 }
 
 export type CompanyUncheckedCreateWithoutIndustryInput = {
   id?: string
+  fromWebsite?: $Enums.FromWebsite
   name: string
-  website: string
+  logoUrl?: string | null
+  websiteUrl?: string | null
   countryId?: string | null
 }
 
@@ -495,51 +559,67 @@ export type CompanyUpdateManyWithWhereWithoutIndustryInput = {
 
 export type CompanyCreateManyCountryInput = {
   id?: string
+  fromWebsite?: $Enums.FromWebsite
   name: string
-  website: string
+  logoUrl?: string | null
+  websiteUrl?: string | null
   industryId?: string | null
 }
 
 export type CompanyUpdateWithoutCountryInput = {
+  fromWebsite?: Prisma.EnumFromWebsiteFieldUpdateOperationsInput | $Enums.FromWebsite
   name?: Prisma.StringFieldUpdateOperationsInput | string
-  website?: Prisma.StringFieldUpdateOperationsInput | string
+  logoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  websiteUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   Industry?: Prisma.IndustryUpdateOneWithoutCompaniesNestedInput
 }
 
 export type CompanyUncheckedUpdateWithoutCountryInput = {
+  fromWebsite?: Prisma.EnumFromWebsiteFieldUpdateOperationsInput | $Enums.FromWebsite
   name?: Prisma.StringFieldUpdateOperationsInput | string
-  website?: Prisma.StringFieldUpdateOperationsInput | string
+  logoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  websiteUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   industryId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type CompanyUncheckedUpdateManyWithoutCountryInput = {
+  fromWebsite?: Prisma.EnumFromWebsiteFieldUpdateOperationsInput | $Enums.FromWebsite
   name?: Prisma.StringFieldUpdateOperationsInput | string
-  website?: Prisma.StringFieldUpdateOperationsInput | string
+  logoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  websiteUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   industryId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type CompanyCreateManyIndustryInput = {
   id?: string
+  fromWebsite?: $Enums.FromWebsite
   name: string
-  website: string
+  logoUrl?: string | null
+  websiteUrl?: string | null
   countryId?: string | null
 }
 
 export type CompanyUpdateWithoutIndustryInput = {
+  fromWebsite?: Prisma.EnumFromWebsiteFieldUpdateOperationsInput | $Enums.FromWebsite
   name?: Prisma.StringFieldUpdateOperationsInput | string
-  website?: Prisma.StringFieldUpdateOperationsInput | string
+  logoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  websiteUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   Country?: Prisma.CountryUpdateOneWithoutCompaniesNestedInput
 }
 
 export type CompanyUncheckedUpdateWithoutIndustryInput = {
+  fromWebsite?: Prisma.EnumFromWebsiteFieldUpdateOperationsInput | $Enums.FromWebsite
   name?: Prisma.StringFieldUpdateOperationsInput | string
-  website?: Prisma.StringFieldUpdateOperationsInput | string
+  logoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  websiteUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   countryId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type CompanyUncheckedUpdateManyWithoutIndustryInput = {
+  fromWebsite?: Prisma.EnumFromWebsiteFieldUpdateOperationsInput | $Enums.FromWebsite
   name?: Prisma.StringFieldUpdateOperationsInput | string
-  website?: Prisma.StringFieldUpdateOperationsInput | string
+  logoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  websiteUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   countryId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
@@ -547,8 +627,10 @@ export type CompanyUncheckedUpdateManyWithoutIndustryInput = {
 
 export type CompanySelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
+  fromWebsite?: boolean
   name?: boolean
-  website?: boolean
+  logoUrl?: boolean
+  websiteUrl?: boolean
   countryId?: boolean
   industryId?: boolean
   Country?: boolean | Prisma.Company$CountryArgs<ExtArgs>
@@ -559,13 +641,15 @@ export type CompanySelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
 
 export type CompanySelectScalar = {
   id?: boolean
+  fromWebsite?: boolean
   name?: boolean
-  website?: boolean
+  logoUrl?: boolean
+  websiteUrl?: boolean
   countryId?: boolean
   industryId?: boolean
 }
 
-export type CompanyOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "website" | "countryId" | "industryId", ExtArgs["result"]["company"]>
+export type CompanyOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "fromWebsite" | "name" | "logoUrl" | "websiteUrl" | "countryId" | "industryId", ExtArgs["result"]["company"]>
 export type CompanyInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   Country?: boolean | Prisma.Company$CountryArgs<ExtArgs>
   Industry?: boolean | Prisma.Company$IndustryArgs<ExtArgs>
@@ -579,8 +663,10 @@ export type $CompanyPayload<ExtArgs extends runtime.Types.Extensions.InternalArg
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
+    fromWebsite: $Enums.FromWebsite
     name: string
-    website: string
+    logoUrl: string | null
+    websiteUrl: string | null
     countryId: string | null
     industryId: string | null
   }, ExtArgs["result"]["company"]>
@@ -978,8 +1064,10 @@ export interface Prisma__CompanyClient<T, Null = never, ExtArgs extends runtime.
  */
 export interface CompanyFieldRefs {
   readonly id: Prisma.FieldRef<"Company", 'String'>
+  readonly fromWebsite: Prisma.FieldRef<"Company", 'FromWebsite'>
   readonly name: Prisma.FieldRef<"Company", 'String'>
-  readonly website: Prisma.FieldRef<"Company", 'String'>
+  readonly logoUrl: Prisma.FieldRef<"Company", 'String'>
+  readonly websiteUrl: Prisma.FieldRef<"Company", 'String'>
   readonly countryId: Prisma.FieldRef<"Company", 'String'>
   readonly industryId: Prisma.FieldRef<"Company", 'String'>
 }

@@ -1,13 +1,17 @@
 import { Browser, Locator, Page } from 'playwright';
 import delay from '@cv-tracker/utils/src/delay.js';
 import dayjs from 'dayjs';
+import prisma from '../config/prisma.js';
+import { CompanyCreateInput, JobCreateInput } from '@cv-tracker/database/prisma/models.js';
+import { FromWebsite } from '@cv-tracker/database/prisma/enums.js';
 
-interface Job {
-    postTime?: string
-    logoUrl?: string
-    companyName?: string
-    jobTitle?: string
-}
+// interface Job {
+//     postTime?: string
+//     logoUrl?: string
+//     companyName?: string
+//     jobTitle?: string
+//     jobDescription?: string
+// }
 
 /**
  * The date of this website can be fetched by api
@@ -69,25 +73,45 @@ export default class RemoteOkCom {
 
     async handleSingleRow(row: Locator, datetime: string) {
         try {
-            let job: Job = { postTime: datetime }
+            let company: CompanyCreateInput = { name: "", websiteUrl: "" }
+
             const dataOffset = await row!.getAttribute('data-offset');
             await row.click();
             await delay(100);
             const expandItem = await row.locator('xpath=following-sibling::tr[1]');
-            const jobTitleItem = await expandItem.locator('div.description >div').nth(1).locator('h1');
-            if (await jobTitleItem.isVisible()) {
-                job.jobTitle = await jobTitleItem.textContent() || "";
+
+            const companyNameItem = await expandItem.locator('div.description div.company_profile h2');
+            if (await companyNameItem.isVisible()) {
+                company.name = (await companyNameItem.textContent() || "").trim();
             }
 
             const logoUrlItem = await expandItem.locator('div.description div.company_profile img.logo');
             if (await logoUrlItem.isVisible()) {
-                job.logoUrl = await logoUrlItem.getAttribute('src') || "";
+                company.logoUrl = await logoUrlItem.getAttribute('src') || "";
             }
 
-            const companyNameItem = await expandItem.locator('div.description div.company_profile h2');
-            if (await companyNameItem.isVisible()) {
-                job.companyName = (await companyNameItem.textContent() || "").trim();
+            const companyDb = await prisma.company.upsert({
+                where: { name_fromWebsite: { name: company.name, fromWebsite: FromWebsite.REMOTEOK } },
+                update: {
+                    logoUrl: company.logoUrl || "",
+                    websiteUrl: company.websiteUrl || ""
+                },
+                create: company,
+            });
+
+
+            let job: JobCreateInput = { companyId: companyDb.id, title: "", sourceUrl: "", onlineTestUrl: "", homeworkQuize: "", description: "" }
+
+            const jobTitleItem = await expandItem.locator('div.description >div').nth(1).locator('h1').first();
+            if (await jobTitleItem.isVisible()) {
+                job.title = await jobTitleItem.textContent() || "";
             }
+
+            const jobDescriptionItem = await expandItem.locator('div.description div.markdown');
+            if (await jobDescriptionItem.isVisible()) {
+                job.description = await jobDescriptionItem.innerHTML() || "";
+            }
+            await prisma.job.create({ data: job });
             console.log('dataOffset=', dataOffset, 'job=', job);
         } catch (err) {
             console.log(err);

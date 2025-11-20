@@ -47,6 +47,13 @@ export type StringWithAggregatesFilter<$PrismaModel = never> = {
   _max?: Prisma.NestedStringFilter<$PrismaModel>
 }
 
+export type EnumFromWebsiteFilter<$PrismaModel = never> = {
+  equals?: $Enums.FromWebsite | Prisma.EnumFromWebsiteFieldRefInput<$PrismaModel>
+  in?: $Enums.FromWebsite[] | Prisma.ListEnumFromWebsiteFieldRefInput<$PrismaModel>
+  notIn?: $Enums.FromWebsite[] | Prisma.ListEnumFromWebsiteFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumFromWebsiteFilter<$PrismaModel> | $Enums.FromWebsite
+}
+
 export type StringNullableFilter<$PrismaModel = never> = {
   equals?: string | Prisma.StringFieldRefInput<$PrismaModel> | null
   in?: string[] | Prisma.ListStringFieldRefInput<$PrismaModel> | null
@@ -61,6 +68,16 @@ export type StringNullableFilter<$PrismaModel = never> = {
   mode?: Prisma.QueryMode
   not?: Prisma.NestedStringNullableFilter<$PrismaModel> | string | null
   isSet?: boolean
+}
+
+export type EnumFromWebsiteWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.FromWebsite | Prisma.EnumFromWebsiteFieldRefInput<$PrismaModel>
+  in?: $Enums.FromWebsite[] | Prisma.ListEnumFromWebsiteFieldRefInput<$PrismaModel>
+  notIn?: $Enums.FromWebsite[] | Prisma.ListEnumFromWebsiteFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumFromWebsiteWithAggregatesFilter<$PrismaModel> | $Enums.FromWebsite
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumFromWebsiteFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumFromWebsiteFilter<$PrismaModel>
 }
 
 export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -141,6 +158,13 @@ export type NestedIntFilter<$PrismaModel = never> = {
   not?: Prisma.NestedIntFilter<$PrismaModel> | number
 }
 
+export type NestedEnumFromWebsiteFilter<$PrismaModel = never> = {
+  equals?: $Enums.FromWebsite | Prisma.EnumFromWebsiteFieldRefInput<$PrismaModel>
+  in?: $Enums.FromWebsite[] | Prisma.ListEnumFromWebsiteFieldRefInput<$PrismaModel>
+  notIn?: $Enums.FromWebsite[] | Prisma.ListEnumFromWebsiteFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumFromWebsiteFilter<$PrismaModel> | $Enums.FromWebsite
+}
+
 export type NestedStringNullableFilter<$PrismaModel = never> = {
   equals?: string | Prisma.StringFieldRefInput<$PrismaModel> | null
   in?: string[] | Prisma.ListStringFieldRefInput<$PrismaModel> | null
@@ -154,6 +178,16 @@ export type NestedStringNullableFilter<$PrismaModel = never> = {
   endsWith?: string | Prisma.StringFieldRefInput<$PrismaModel>
   not?: Prisma.NestedStringNullableFilter<$PrismaModel> | string | null
   isSet?: boolean
+}
+
+export type NestedEnumFromWebsiteWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.FromWebsite | Prisma.EnumFromWebsiteFieldRefInput<$PrismaModel>
+  in?: $Enums.FromWebsite[] | Prisma.ListEnumFromWebsiteFieldRefInput<$PrismaModel>
+  notIn?: $Enums.FromWebsite[] | Prisma.ListEnumFromWebsiteFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumFromWebsiteWithAggregatesFilter<$PrismaModel> | $Enums.FromWebsite
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumFromWebsiteFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumFromWebsiteFilter<$PrismaModel>
 }
 
 export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
