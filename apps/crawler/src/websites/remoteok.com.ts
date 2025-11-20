@@ -24,6 +24,8 @@ export default class RemoteOkCom {
     private handledRowCount: number = 0;
 
     async crawl(browser: Browser) {
+        await prisma.company.deleteMany();
+        await prisma.job.deleteMany();
         const context = await browser.newContext();
         try {
             const page = await context.newPage();
@@ -73,7 +75,7 @@ export default class RemoteOkCom {
 
     async handleSingleRow(row: Locator, datetime: string) {
         try {
-            let company: CompanyCreateInput = { name: "", websiteUrl: "" }
+            let company: CompanyCreateInput = { name: "", websiteUrl: "", fromWebsite: FromWebsite.REMOTEOK }
 
             const dataOffset = await row!.getAttribute('data-offset');
             await row.click();
@@ -100,7 +102,11 @@ export default class RemoteOkCom {
             });
 
 
-            let job: JobCreateInput = { companyId: companyDb.id, title: "", sourceUrl: "", onlineTestUrl: "", homeworkQuize: "", description: "" }
+            let job: JobCreateInput = {
+                companyId: companyDb.id, title: "", sourceUrl: "",
+                onlineTestUrl: "", homeworkQuize: "", description: "",
+                postedAt: dayjs(datetime).toDate()
+            }
 
             const jobTitleItem = await expandItem.locator('div.description >div').nth(1).locator('h1').first();
             if (await jobTitleItem.isVisible()) {

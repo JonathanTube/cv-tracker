@@ -109,7 +109,8 @@ export const JobScalarFieldEnum = {
   sourceUrl: 'sourceUrl',
   onlineTestUrl: 'onlineTestUrl',
   homeworkQuize: 'homeworkQuize',
-  description: 'description'
+  description: 'description',
+  postedAt: 'postedAt'
 } as const
 
 export type JobScalarFieldEnum = (typeof JobScalarFieldEnum)[keyof typeof JobScalarFieldEnum]

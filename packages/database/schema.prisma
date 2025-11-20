@@ -56,6 +56,7 @@ model Job {
   description   String
   applications  Application[]
   techStacks    TechStack[]
+  postedAt      DateTime
 }
 
 model User {

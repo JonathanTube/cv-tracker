@@ -32,6 +32,7 @@ export type JobMinAggregateOutputType = {
   onlineTestUrl: string | null
   homeworkQuize: string | null
   description: string | null
+  postedAt: Date | null
 }
 
 export type JobMaxAggregateOutputType = {
@@ -42,6 +43,7 @@ export type JobMaxAggregateOutputType = {
   onlineTestUrl: string | null
   homeworkQuize: string | null
   description: string | null
+  postedAt: Date | null
 }
 
 export type JobCountAggregateOutputType = {
@@ -52,6 +54,7 @@ export type JobCountAggregateOutputType = {
   onlineTestUrl: number
   homeworkQuize: number
   description: number
+  postedAt: number
   _all: number
 }
 
@@ -64,6 +67,7 @@ export type JobMinAggregateInputType = {
   onlineTestUrl?: true
   homeworkQuize?: true
   description?: true
+  postedAt?: true
 }
 
 export type JobMaxAggregateInputType = {
@@ -74,6 +78,7 @@ export type JobMaxAggregateInputType = {
   onlineTestUrl?: true
   homeworkQuize?: true
   description?: true
+  postedAt?: true
 }
 
 export type JobCountAggregateInputType = {
@@ -84,6 +89,7 @@ export type JobCountAggregateInputType = {
   onlineTestUrl?: true
   homeworkQuize?: true
   description?: true
+  postedAt?: true
   _all?: true
 }
 
@@ -167,6 +173,7 @@ export type JobGroupByOutputType = {
   onlineTestUrl: string
   homeworkQuize: string
   description: string
+  postedAt: Date
   _count: JobCountAggregateOutputType | null
   _min: JobMinAggregateOutputType | null
   _max: JobMaxAggregateOutputType | null
@@ -198,6 +205,7 @@ export type JobWhereInput = {
   onlineTestUrl?: Prisma.StringFilter<"Job"> | string
   homeworkQuize?: Prisma.StringFilter<"Job"> | string
   description?: Prisma.StringFilter<"Job"> | string
+  postedAt?: Prisma.DateTimeFilter<"Job"> | Date | string
   applications?: Prisma.ApplicationListRelationFilter
   techStacks?: Prisma.TechStackListRelationFilter
 }
@@ -210,6 +218,7 @@ export type JobOrderByWithRelationInput = {
   onlineTestUrl?: Prisma.SortOrder
   homeworkQuize?: Prisma.SortOrder
   description?: Prisma.SortOrder
+  postedAt?: Prisma.SortOrder
   applications?: Prisma.ApplicationOrderByRelationAggregateInput
   techStacks?: Prisma.TechStackOrderByRelationAggregateInput
 }
@@ -225,6 +234,7 @@ export type JobWhereUniqueInput = Prisma.AtLeast<{
   onlineTestUrl?: Prisma.StringFilter<"Job"> | string
   homeworkQuize?: Prisma.StringFilter<"Job"> | string
   description?: Prisma.StringFilter<"Job"> | string
+  postedAt?: Prisma.DateTimeFilter<"Job"> | Date | string
   applications?: Prisma.ApplicationListRelationFilter
   techStacks?: Prisma.TechStackListRelationFilter
 }, "id">
@@ -237,6 +247,7 @@ export type JobOrderByWithAggregationInput = {
   onlineTestUrl?: Prisma.SortOrder
   homeworkQuize?: Prisma.SortOrder
   description?: Prisma.SortOrder
+  postedAt?: Prisma.SortOrder
   _count?: Prisma.JobCountOrderByAggregateInput
   _max?: Prisma.JobMaxOrderByAggregateInput
   _min?: Prisma.JobMinOrderByAggregateInput
@@ -253,6 +264,7 @@ export type JobScalarWhereWithAggregatesInput = {
   onlineTestUrl?: Prisma.StringWithAggregatesFilter<"Job"> | string
   homeworkQuize?: Prisma.StringWithAggregatesFilter<"Job"> | string
   description?: Prisma.StringWithAggregatesFilter<"Job"> | string
+  postedAt?: Prisma.DateTimeWithAggregatesFilter<"Job"> | Date | string
 }
 
 export type JobCreateInput = {
@@ -263,6 +275,7 @@ export type JobCreateInput = {
   onlineTestUrl: string
   homeworkQuize: string
   description: string
+  postedAt: Date | string
   applications?: Prisma.ApplicationCreateNestedManyWithoutJobInput
   techStacks?: Prisma.TechStackCreateNestedManyWithoutJobInput
 }
@@ -275,6 +288,7 @@ export type JobUncheckedCreateInput = {
   onlineTestUrl: string
   homeworkQuize: string
   description: string
+  postedAt: Date | string
   applications?: Prisma.ApplicationUncheckedCreateNestedManyWithoutJobInput
   techStacks?: Prisma.TechStackUncheckedCreateNestedManyWithoutJobInput
 }
@@ -286,6 +300,7 @@ export type JobUpdateInput = {
   onlineTestUrl?: Prisma.StringFieldUpdateOperationsInput | string
   homeworkQuize?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
+  postedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   applications?: Prisma.ApplicationUpdateManyWithoutJobNestedInput
   techStacks?: Prisma.TechStackUpdateManyWithoutJobNestedInput
 }
@@ -297,6 +312,7 @@ export type JobUncheckedUpdateInput = {
   onlineTestUrl?: Prisma.StringFieldUpdateOperationsInput | string
   homeworkQuize?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
+  postedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   applications?: Prisma.ApplicationUncheckedUpdateManyWithoutJobNestedInput
   techStacks?: Prisma.TechStackUncheckedUpdateManyWithoutJobNestedInput
 }
@@ -309,6 +325,7 @@ export type JobCreateManyInput = {
   onlineTestUrl: string
   homeworkQuize: string
   description: string
+  postedAt: Date | string
 }
 
 export type JobUpdateManyMutationInput = {
@@ -318,6 +335,7 @@ export type JobUpdateManyMutationInput = {
   onlineTestUrl?: Prisma.StringFieldUpdateOperationsInput | string
   homeworkQuize?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
+  postedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type JobUncheckedUpdateManyInput = {
@@ -327,6 +345,7 @@ export type JobUncheckedUpdateManyInput = {
   onlineTestUrl?: Prisma.StringFieldUpdateOperationsInput | string
   homeworkQuize?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
+  postedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type JobNullableScalarRelationFilter = {
@@ -342,6 +361,7 @@ export type JobCountOrderByAggregateInput = {
   onlineTestUrl?: Prisma.SortOrder
   homeworkQuize?: Prisma.SortOrder
   description?: Prisma.SortOrder
+  postedAt?: Prisma.SortOrder
 }
 
 export type JobMaxOrderByAggregateInput = {
@@ -352,6 +372,7 @@ export type JobMaxOrderByAggregateInput = {
   onlineTestUrl?: Prisma.SortOrder
   homeworkQuize?: Prisma.SortOrder
   description?: Prisma.SortOrder
+  postedAt?: Prisma.SortOrder
 }
 
 export type JobMinOrderByAggregateInput = {
@@ -362,6 +383,7 @@ export type JobMinOrderByAggregateInput = {
   onlineTestUrl?: Prisma.SortOrder
   homeworkQuize?: Prisma.SortOrder
   description?: Prisma.SortOrder
+  postedAt?: Prisma.SortOrder
 }
 
 export type JobCreateNestedOneWithoutTechStacksInput = {
@@ -378,6 +400,10 @@ export type JobUpdateOneWithoutTechStacksNestedInput = {
   delete?: Prisma.JobWhereInput | boolean
   connect?: Prisma.JobWhereUniqueInput
   update?: Prisma.XOR<Prisma.XOR<Prisma.JobUpdateToOneWithWhereWithoutTechStacksInput, Prisma.JobUpdateWithoutTechStacksInput>, Prisma.JobUncheckedUpdateWithoutTechStacksInput>
+}
+
+export type DateTimeFieldUpdateOperationsInput = {
+  set?: Date | string
 }
 
 export type JobCreateNestedOneWithoutApplicationsInput = {
@@ -404,6 +430,7 @@ export type JobCreateWithoutTechStacksInput = {
   onlineTestUrl: string
   homeworkQuize: string
   description: string
+  postedAt: Date | string
   applications?: Prisma.ApplicationCreateNestedManyWithoutJobInput
 }
 
@@ -415,6 +442,7 @@ export type JobUncheckedCreateWithoutTechStacksInput = {
   onlineTestUrl: string
   homeworkQuize: string
   description: string
+  postedAt: Date | string
   applications?: Prisma.ApplicationUncheckedCreateNestedManyWithoutJobInput
 }
 
@@ -441,6 +469,7 @@ export type JobUpdateWithoutTechStacksInput = {
   onlineTestUrl?: Prisma.StringFieldUpdateOperationsInput | string
   homeworkQuize?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
+  postedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   applications?: Prisma.ApplicationUpdateManyWithoutJobNestedInput
 }
 
@@ -451,6 +480,7 @@ export type JobUncheckedUpdateWithoutTechStacksInput = {
   onlineTestUrl?: Prisma.StringFieldUpdateOperationsInput | string
   homeworkQuize?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
+  postedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   applications?: Prisma.ApplicationUncheckedUpdateManyWithoutJobNestedInput
 }
 
@@ -462,6 +492,7 @@ export type JobCreateWithoutApplicationsInput = {
   onlineTestUrl: string
   homeworkQuize: string
   description: string
+  postedAt: Date | string
   techStacks?: Prisma.TechStackCreateNestedManyWithoutJobInput
 }
 
@@ -473,6 +504,7 @@ export type JobUncheckedCreateWithoutApplicationsInput = {
   onlineTestUrl: string
   homeworkQuize: string
   description: string
+  postedAt: Date | string
   techStacks?: Prisma.TechStackUncheckedCreateNestedManyWithoutJobInput
 }
 
@@ -499,6 +531,7 @@ export type JobUpdateWithoutApplicationsInput = {
   onlineTestUrl?: Prisma.StringFieldUpdateOperationsInput | string
   homeworkQuize?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
+  postedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   techStacks?: Prisma.TechStackUpdateManyWithoutJobNestedInput
 }
 
@@ -509,6 +542,7 @@ export type JobUncheckedUpdateWithoutApplicationsInput = {
   onlineTestUrl?: Prisma.StringFieldUpdateOperationsInput | string
   homeworkQuize?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
+  postedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   techStacks?: Prisma.TechStackUncheckedUpdateManyWithoutJobNestedInput
 }
 
@@ -560,6 +594,7 @@ export type JobSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = ru
   onlineTestUrl?: boolean
   homeworkQuize?: boolean
   description?: boolean
+  postedAt?: boolean
   applications?: boolean | Prisma.Job$applicationsArgs<ExtArgs>
   techStacks?: boolean | Prisma.Job$techStacksArgs<ExtArgs>
   _count?: boolean | Prisma.JobCountOutputTypeDefaultArgs<ExtArgs>
@@ -575,9 +610,10 @@ export type JobSelectScalar = {
   onlineTestUrl?: boolean
   homeworkQuize?: boolean
   description?: boolean
+  postedAt?: boolean
 }
 
-export type JobOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "companyId" | "title" | "sourceUrl" | "onlineTestUrl" | "homeworkQuize" | "description", ExtArgs["result"]["job"]>
+export type JobOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "companyId" | "title" | "sourceUrl" | "onlineTestUrl" | "homeworkQuize" | "description" | "postedAt", ExtArgs["result"]["job"]>
 export type JobInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   applications?: boolean | Prisma.Job$applicationsArgs<ExtArgs>
   techStacks?: boolean | Prisma.Job$techStacksArgs<ExtArgs>
@@ -598,6 +634,7 @@ export type $JobPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
     onlineTestUrl: string
     homeworkQuize: string
     description: string
+    postedAt: Date
   }, ExtArgs["result"]["job"]>
   composites: {}
 }
@@ -999,6 +1036,7 @@ export interface JobFieldRefs {
   readonly onlineTestUrl: Prisma.FieldRef<"Job", 'String'>
   readonly homeworkQuize: Prisma.FieldRef<"Job", 'String'>
   readonly description: Prisma.FieldRef<"Job", 'String'>
+  readonly postedAt: Prisma.FieldRef<"Job", 'DateTime'>
 }
     
 

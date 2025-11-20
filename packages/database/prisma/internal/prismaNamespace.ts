@@ -996,7 +996,8 @@ export const JobScalarFieldEnum = {
   sourceUrl: 'sourceUrl',
   onlineTestUrl: 'onlineTestUrl',
   homeworkQuize: 'homeworkQuize',
-  description: 'description'
+  description: 'description',
+  postedAt: 'postedAt'
 } as const
 
 export type JobScalarFieldEnum = (typeof JobScalarFieldEnum)[keyof typeof JobScalarFieldEnum]
@@ -1069,6 +1070,20 @@ export type EnumFromWebsiteFieldRefInput<$PrismaModel> = FieldRefInputType<$Pris
  * Reference to a field of type 'FromWebsite[]'
  */
 export type ListEnumFromWebsiteFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'FromWebsite[]'>
+    
+
+
+/**
+ * Reference to a field of type 'DateTime'
+ */
+export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
+    
+
+
+/**
+ * Reference to a field of type 'DateTime[]'
+ */
+export type ListDateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime[]'>
     
 
 
