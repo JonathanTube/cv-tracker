@@ -1,10 +1,11 @@
 import ApplicationOverTime from "../components/ApplicationOverTime.js"
+import Menu from "../components/Menu.js"
 import SummaryCard from "../components/SummaryCard.js"
 
 const Home: React.FC = () => {
   return (
     <>
-      <div className="flex gap-5">
+      {/* <div className="flex gap-5">
         <div className="w-1/2 bg-amber-300 rounded overflow-hidden">
           <img
             src="https://dotcommagazine.com/wp-content/uploads/2023/06/Programming-696x446.jpg"
@@ -26,7 +27,8 @@ const Home: React.FC = () => {
       </div>
       <div className="mt-5">
         <ApplicationOverTime />
-      </div>
+      </div> */}
+      <Menu />
     </>
   )
 }

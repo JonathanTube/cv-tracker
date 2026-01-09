@@ -1,1 +1,11 @@
 @import "tailwindcss";
+
+@import '@fortawesome/fontawesome-free/css/all.min.css';
+
+.pixel-card {
+    @apply bg-white/90 border-4 border-black transition-all duration-200;
+}
+
+.pixel-card:hover {
+    @apply transform -translate-x-1 -translate-y-1;
+}
