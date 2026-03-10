@@ -3,9 +3,11 @@ import Nav from "./Nav.js"
 
 export default function Header() {
   return (
-    <nav className="container mx-auto flex justify-between py-2">
-      <Logo />
-      <Nav />
-    </nav>
+    <header className="bg-primary text-white p-4 shadow-md relative z-10">
+      <div className="container mx-auto flex justify-between items-center">
+        <Logo />
+        {/* <Nav /> */}
+      </div>
+    </header>
   )
 }

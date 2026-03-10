@@ -7,11 +7,9 @@ import RemoteOkCom from './websites/remoteok.com.js';
     const browser = await chromium.launch({ headless: true });
 
     // start crawl
-    const remoteOkCom = new RemoteOkCom();
-    await remoteOkCom.crawl(browser);
+    await new RemoteOkCom().crawl(browser);
 
-    // const dynamitejobsCom = new DynamitejobsCom();
-    // await dynamitejobsCom.crawl(browser);
+    // await new DynamitejobsCom().crawl(browser);
 
     // Teardown
     await browser.close();

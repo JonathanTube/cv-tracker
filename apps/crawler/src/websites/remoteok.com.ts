@@ -24,8 +24,8 @@ export default class RemoteOkCom {
     private handledRowCount: number = 0;
 
     async crawl(browser: Browser) {
-        await prisma.company.deleteMany();
-        await prisma.job.deleteMany();
+        // await prisma.company.deleteMany();
+        // await prisma.job.deleteMany();
         const context = await browser.newContext();
         try {
             const page = await context.newPage();
